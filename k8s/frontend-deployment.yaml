@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minantrack-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: minantrack-web
+  template:
+    metadata:
+      labels:
+        app: minantrack-web
+    spec:
+      containers:
+        - name: minantrack-web
+          image: minantrack-web:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minantrack-web
+spec:
+  selector:
+    app: minantrack-web
+  ports:
+    - port: 80
+      targetPort: 3000

@@ -1,0 +1,24 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.pdb
+*.exe
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.npm/
+
+# General
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+
+# BMAD / generated outputs
+_bmad-output/
