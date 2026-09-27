@@ -1,0 +1,117 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-09-27T21:59:00.000Z" agent="Antigravity" version="24.0.0" type="device">
+  <diagram id="minantrack-database-schema" name="MinanTrack BDD Relationnelle (PostgreSQL)">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" background="#F8FAFC" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITRE -->
+        <mxCell id="title_db" value="MinanTrack — Schéma Relationnel PostgreSQL &amp; Indirection Transparente" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="1200" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 1: USERS -->
+        <mxCell id="table_users" value="&lt;b&gt;users&lt;/b&gt; (Authentification &amp;amp; Profils)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UQ&lt;/b&gt;&lt;/td&gt;&lt;td&gt;email&lt;/td&gt;&lt;td&gt;VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;password_hash&lt;/td&gt;&lt;td&gt;VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;full_name&lt;/td&gt;&lt;td&gt;VARCHAR(150)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;IDX&lt;/b&gt;&lt;/td&gt;&lt;td&gt;phone_number&lt;/td&gt;&lt;td&gt;VARCHAR(50)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;role&lt;/td&gt;&lt;td&gt;VARCHAR(30)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;created_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;updated_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=2;align=left;spacingLeft=10;verticalAlign=top;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="280" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 2: CARRIERS -->
+        <mxCell id="table_carriers" value="&lt;b&gt;carriers&lt;/b&gt; (Profil &amp;amp; Collecte Convoyeur)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;user_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;company_name&lt;/td&gt;&lt;td&gt;VARCHAR(150)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;contact_phone&lt;/td&gt;&lt;td&gt;VARCHAR(50)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;depot_address&lt;/td&gt;&lt;td&gt;VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;depot_operating_hours&lt;/td&gt;&lt;td&gt;VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;allow_depot_dropoff&lt;/td&gt;&lt;td&gt;BOOLEAN&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;allow_phone_appointment&lt;/td&gt;&lt;td&gt;BOOLEAN&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;allow_home_collection&lt;/td&gt;&lt;td&gt;BOOLEAN&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;collection_radius_km&lt;/td&gt;&lt;td&gt;INTEGER&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;collection_fee&lt;/td&gt;&lt;td&gt;NUMERIC(10,2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;covered_zones&lt;/td&gt;&lt;td&gt;JSONB&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;is_verified&lt;/td&gt;&lt;td&gt;BOOLEAN&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;created_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=2;align=left;spacingLeft=10;verticalAlign=top;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="420" y="90" width="310" height="290" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 3: PACKAGE_CATALOG_ITEMS -->
+        <mxCell id="table_catalog" value="&lt;b&gt;package_catalog_items&lt;/b&gt; (Catalogue)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;carrier_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;category&lt;/td&gt;&lt;td&gt;VARCHAR(50)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;name (ex: Sac 50kg, Baril 200L)&lt;/td&gt;&lt;td&gt;VARCHAR(150)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;description&lt;/td&gt;&lt;td&gt;VARCHAR(500)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;max_weight_kg&lt;/td&gt;&lt;td&gt;NUMERIC(8,2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;volume_liters&lt;/td&gt;&lt;td&gt;NUMERIC(8,2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;dimensions_json&lt;/td&gt;&lt;td&gt;JSONB&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;image_url&lt;/td&gt;&lt;td&gt;VARCHAR(500)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;base_price&lt;/td&gt;&lt;td&gt;NUMERIC(10,2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;currency&lt;/td&gt;&lt;td&gt;VARCHAR(10)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;is_active&lt;/td&gt;&lt;td&gt;BOOLEAN&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=2;align=left;spacingLeft=10;verticalAlign=top;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="810" y="90" width="320" height="260" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 4: TRIPS -->
+        <mxCell id="table_trips" value="&lt;b&gt;trips&lt;/b&gt; (Conteneurs, Camions, Avions)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;carrier_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UQ&lt;/b&gt;&lt;/td&gt;&lt;td&gt;trip_reference&lt;/td&gt;&lt;td&gt;VARCHAR(60)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;transport_type&lt;/td&gt;&lt;td&gt;VARCHAR(30)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;vehicle_identifier&lt;/td&gt;&lt;td&gt;VARCHAR(100)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;origin_hub&lt;/td&gt;&lt;td&gt;VARCHAR(100)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;destination_hub&lt;/td&gt;&lt;td&gt;VARCHAR(100)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;departure_date&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;estimated_arrival_date&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;capacity_volume_m3&lt;/td&gt;&lt;td&gt;NUMERIC(8,2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;capacity_weight_kg&lt;/td&gt;&lt;td&gt;NUMERIC(8,2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;status (Open, Loading, InTransit...)&lt;/td&gt;&lt;td&gt;VARCHAR(30)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;current_milestone (1..7)&lt;/td&gt;&lt;td&gt;INTEGER&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=2;align=left;spacingLeft=10;verticalAlign=top;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="90" width="330" height="280" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 5: PARCELS -->
+        <mxCell id="table_parcels" value="&lt;b&gt;parcels&lt;/b&gt; (Colis &amp;amp; Code Permanent Étiquette)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UQ&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b style=&quot;color:#DC2626;&quot;&gt;tracking_code (QR Code)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;VARCHAR(32)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;sender_user_id (NULL si invité)&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;carrier_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;catalog_item_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;sender_name / phone&lt;/td&gt;&lt;td&gt;VARCHAR&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;recipient_name / phone&lt;/td&gt;&lt;td&gt;VARCHAR&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;recipient_city (Bamako, Sikasso...)&lt;/td&gt;&lt;td&gt;VARCHAR(100)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;item_description&lt;/td&gt;&lt;td&gt;VARCHAR(500)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;declared_weight_kg / measured_weight_kg&lt;/td&gt;&lt;td&gt;NUMERIC(8,2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;total_price / currency&lt;/td&gt;&lt;td&gt;NUMERIC/EUR&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;pickup_option (Depot/Phone/Home)&lt;/td&gt;&lt;td&gt;VARCHAR(30)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;pickup_address / pickup_fee&lt;/td&gt;&lt;td&gt;VARCHAR/NUMERIC&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;current_milestone (1..7)&lt;/td&gt;&lt;td&gt;INTEGER&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;label_printed_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5AFBC4;strokeWidth=2.5;align=left;spacingLeft=10;verticalAlign=top;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="810" y="470" width="340" height="340" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 6: TRANSPORT_ASSIGNMENTS (INDIRECTION) -->
+        <mxCell id="table_assignments" value="&lt;b&gt;transport_assignments&lt;/b&gt; (&lt;span style=&quot;color:#DC2626;&quot;&gt;Indirection Transparente&lt;/span&gt;)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;parcel_id&lt;/b&gt;&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;trip_id&lt;/b&gt;&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;assigned_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;unassigned_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UQ_IDX&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;is_active (WHERE is_active = TRUE)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;BOOLEAN&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;reassignment_reason&lt;/td&gt;&lt;td&gt;VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;operator_user_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#DC2626;strokeWidth=2;align=left;spacingLeft=10;verticalAlign=top;fontColor=#991B1B;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="470" width="340" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 7: TRACKING_MILESTONES -->
+        <mxCell id="table_milestones" value="&lt;b&gt;tracking_milestones&lt;/b&gt; (Audit 7 Jalons Immuables)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;parcel_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;milestone_step (1..7)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;INTEGER&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;milestone_label (libellé FR visible)&lt;/td&gt;&lt;td&gt;VARCHAR(100)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;location (Montreuil, En mer, Bamako...)&lt;/td&gt;&lt;td&gt;VARCHAR(150)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;notes&lt;/td&gt;&lt;td&gt;VARCHAR(500)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;occurred_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;recorded_by_user_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=2;align=left;spacingLeft=10;verticalAlign=top;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="810" y="860" width="340" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 8: COMMUNICATIONS -->
+        <mxCell id="table_comms" value="&lt;b&gt;communications&lt;/b&gt; (Messages In-App &amp;amp; Logs)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;parcel_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;sender_user_id&lt;/td&gt;&lt;td&gt;UUID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;CHK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;channel (InApp, Sms, PhoneCallLog)&lt;/td&gt;&lt;td&gt;VARCHAR(30)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;message_body&lt;/td&gt;&lt;td&gt;TEXT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;is_read&lt;/td&gt;&lt;td&gt;BOOLEAN&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;created_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=2;align=left;spacingLeft=10;verticalAlign=top;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="420" y="860" width="310" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- TABLE 9: SCHEMA_MIGRATIONS (AUDIT DEPLOIEMENT HORS EF) -->
+        <mxCell id="table_schema_migrations" value="&lt;b&gt;schema_migrations&lt;/b&gt; (Table Système d'Audit SQL)&lt;hr&gt;&lt;table style=&quot;width:100%;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PK&lt;/b&gt;&lt;/td&gt;&lt;td&gt;version (ex: V001)&lt;/td&gt;&lt;td&gt;VARCHAR(50)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;description&lt;/td&gt;&lt;td&gt;VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;script_name (V001__initial_schema.sql)&lt;/td&gt;&lt;td&gt;VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;checksum (SHA256)&lt;/td&gt;&lt;td&gt;VARCHAR(64)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;applied_at&lt;/td&gt;&lt;td&gt;TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;execution_time_ms&lt;/td&gt;&lt;td&gt;INTEGER&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;applied_by&lt;/td&gt;&lt;td&gt;VARCHAR(100)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#4B5563;strokeWidth=1.5;align=left;spacingLeft=10;verticalAlign=top;fontColor=#1F2937;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="60" y="860" width="310" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- ENCART EXPLICATIF : INDIRECTION TRANSPARENTE -->
+        <mxCell id="box_explanation" value="&lt;b&gt;FONCTIONNEMENT DE L'INDIRECTION TRANSPARENTE :&lt;/b&gt;&lt;br&gt;&lt;br&gt;1. &lt;b&gt;Étiquette Physique Stable :&lt;/b&gt; Lors de la réception, une étiquette avec &lt;code&gt;tracking_code&lt;/code&gt; immuable (ex: MT-8F92A1) est collée sur le sac ou baril.&lt;br&gt;2. &lt;b&gt;Liaison Dynamique :&lt;/b&gt; Une entrée est créée dans &lt;code&gt;transport_assignments&lt;/code&gt; avec &lt;code&gt;is_active = TRUE&lt;/code&gt; pointant vers le &lt;code&gt;trip_id&lt;/code&gt; du Camion 1.&lt;br&gt;3. &lt;b&gt;Transvasement sans réétiquetage :&lt;/b&gt; Si le convoyeur transvase le colis dans le Conteneur 2, l'ancienne liaison passe à &lt;code&gt;is_active = FALSE&lt;/code&gt; et une nouvelle ligne est insérée pointant vers le nouveau &lt;code&gt;trip_id&lt;/code&gt;.&lt;br&gt;4. &lt;b&gt;Impact Client :&lt;/b&gt; Le client continue à suivre son colis avec le même QR code / tracking_code, sans interruption et sans confusion." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;align=left;spacingLeft=15;fontColor=#1E40AF;fontSize=12;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="730" width="460" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- RELATIONS / LIAISONS ERD -->
+        <!-- users -> carriers -->
+        <mxCell id="rel_users_carriers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;strokeColor=#273349;strokeWidth=1.5;" edge="1" source="table_users" target="table_carriers" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- carriers -> catalog -->
+        <mxCell id="rel_carriers_catalog" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;strokeColor=#273349;strokeWidth=1.5;" edge="1" source="table_carriers" target="table_catalog" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- carriers -> trips -->
+        <mxCell id="rel_carriers_trips" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;strokeColor=#273349;strokeWidth=1.5;" edge="1" source="table_carriers" target="table_trips" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="575" y="420" />
+              <mxPoint x="1375" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- catalog -> parcels -->
+        <mxCell id="rel_catalog_parcels" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;strokeColor=#273349;strokeWidth=1.5;" edge="1" source="table_catalog" target="table_parcels" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- parcels -> transport_assignments (indirection) -->
+        <mxCell id="rel_parcels_assignments" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;strokeColor=#DC2626;strokeWidth=2.5;" edge="1" source="table_parcels" target="table_assignments" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- trips -> transport_assignments -->
+        <mxCell id="rel_trips_assignments" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;strokeColor=#DC2626;strokeWidth=2.5;" edge="1" source="table_trips" target="table_assignments" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- parcels -> milestones -->
+        <mxCell id="rel_parcels_milestones" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;strokeColor=#273349;strokeWidth=1.5;" edge="1" source="table_parcels" target="table_milestones" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- parcels -> communications -->
+        <mxCell id="rel_parcels_comms" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;strokeColor=#273349;strokeWidth=1.5;" edge="1" source="table_parcels" target="table_comms" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="640" />
+              <mxPoint x="760" y="955" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

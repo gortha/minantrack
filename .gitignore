@@ -21,4 +21,6 @@ Thumbs.db
 *.log
 
 # BMAD / generated outputs
-_bmad-output/
+_bmad-output/*
+!_bmad-output/planning-artifacts/
+

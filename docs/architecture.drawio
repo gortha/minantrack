@@ -1,0 +1,142 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-09-27T21:58:00.000Z" agent="Antigravity" version="24.0.0" type="device">
+  <diagram id="minantrack-architecture" name="MinanTrack Architecture C20 .NET 10">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" background="#F8FAFC" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Titre Principal -->
+        <mxCell id="title" value="MinanTrack — Architecture Modulaire C20 (.NET 10) &amp; Déploiement Kubernetes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="1100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ZONE 1: CLIENTS & FRONTEND -->
+        <mxCell id="zone_front" value="Couche Présentation &amp; Clients (Design System Weft)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#F4F6F8;strokeColor=#273349;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#273349;fontFamily=Rubik;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="480" height="980" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client_guest" value="&lt;b&gt;Client Invité (Public)&lt;/b&gt;&lt;br&gt;Smartphone / Web&lt;br&gt;&lt;i&gt;Suivi direct instantané par Code/QR&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_front">
+          <mxGeometry x="30" y="50" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="client_auth" value="&lt;b&gt;Client Connecté (Espace Diaspora)&lt;/b&gt;&lt;br&gt;Historique, convoyeurs favoris,&lt;br&gt;devis instantané, messagerie in-app" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_front">
+          <mxGeometry x="250" y="50" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="carrier_portal" value="&lt;b&gt;Convoyeur (Backoffice &amp; Mobile)&lt;/b&gt;&lt;br&gt;Gestion départs, scan étiquette,&lt;br&gt;transvasement, manifeste &amp; bulk update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#273349;strokeColor=#5AFBC4;strokeWidth=2;fontColor=#FFFFFF;fontFamily=Rubik;" vertex="1" parent="zone_front">
+          <mxGeometry x="30" y="150" width="420" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="nextjs_box" value="&lt;b&gt;Application Frontend Next.js 14+ (App Router)&lt;/b&gt;&lt;br&gt;• TypeScript, React 18/19&lt;br&gt;• Material UI (MUI v6) — Palette Weft&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;(#273349 Weft Blue, #5AFBC4 Weft Green)&lt;br&gt;• TanStack Query v5 (Gestion cache API)&lt;br&gt;• QR Code Generator &amp; Scanner HTML5&lt;br&gt;• Approche Mobile-First tactile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5AFBC4;strokeWidth=2;fontColor=#273349;align=left;spacingLeft=15;fontFamily=Rubik;" vertex="1" parent="zone_front">
+          <mxGeometry x="30" y="250" width="420" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="weft_theme_box" value="&lt;b&gt;Charte Visuelle Weft&lt;/b&gt;&lt;br&gt;• Primaire : #273349 (Bleu Nuit)&lt;br&gt;• Accent / Action : #5AFBC4 (Vert Menthe)&lt;br&gt;• Fond : #F4F6F8 | Alerte : #F45B69&lt;br&gt;• Typo : Rubik (Titres) / Kodchasan (Actions)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#5AFBC4;strokeWidth=1;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_front">
+          <mxGeometry x="30" y="480" width="420" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="timeline_widget" value="&lt;b&gt;Timeline Interactive des 7 Jalons&lt;/b&gt;&lt;br&gt;1. Réceptionné en entrepôt / collecte&lt;br&gt;2. Chargement commencé (camion/conteneur)&lt;br&gt;3. En cours de trajet : 1/4&lt;br&gt;4. En cours de trajet : 1/2 (mi-chemin)&lt;br&gt;5. En cours de trajet : 3/4&lt;br&gt;6. Arrivé à destination (Bamako)&lt;br&gt;7. Livré / Remis au destinataire" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;align=left;spacingLeft=15;fontFamily=Rubik;" vertex="1" parent="zone_front">
+          <mxGeometry x="30" y="620" width="420" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="comms_widget" value="&lt;b&gt;Canaux de Contact Direct&lt;/b&gt;&lt;br&gt;• Appel téléphonique direct (&lt;code&gt;tel:&lt;/code&gt;)&lt;br&gt;• Envoi SMS pré-rempli (&lt;code&gt;sms:&lt;/code&gt;)&lt;br&gt;• Fil de messagerie in-app temps réel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_front">
+          <mxGeometry x="30" y="820" width="420" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- ZONE 2: API GATEWAY & K8S INGRESS -->
+        <mxCell id="ingress_box" value="&lt;b&gt;Kubernetes Ingress &amp; Routing&lt;/b&gt;&lt;br&gt;• Ingress-NGINX / Traefik&lt;br&gt;• Terminaison TLS Let's Encrypt (Cert-Manager)&lt;br&gt;• Routage /api/* -&gt; Backend &amp;amp; /* -&gt; Frontend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#273349;strokeColor=#5AFBC4;strokeWidth=2;fontColor=#FFFFFF;fontFamily=Rubik;" vertex="1" parent="1">
+          <mxGeometry x="580" y="320" width="160" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- ZONE 3: BACKEND C20 MODULAR MONOLITH (.NET 10) -->
+        <mxCell id="zone_back" value="Backend Monolithe Modulaire C20 (.NET 10 Minimal APIs)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#F4F6F8;strokeColor=#273349;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#273349;fontFamily=Rubik;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="780" y="80" width="560" height="980" as="geometry" />
+        </mxCell>
+
+        <mxCell id="api_host" value="&lt;b&gt;MinanTrack.Api (Host Minimal APIs)&lt;/b&gt;&lt;br&gt;.NET 10 (SDK 10.0.401) | Global Exception Handler | Auth JWT | HealthChecks /healthz" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#273349;strokeColor=#5AFBC4;strokeWidth=2;fontColor=#FFFFFF;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="30" y="50" width="500" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mod_carriers" value="&lt;b&gt;Module Carriers&lt;/b&gt;&lt;br&gt;• Profils convoyeurs vérifiés&lt;br&gt;• Dépôt fixe &amp; horaires&lt;br&gt;• Collecte à domicile (rayon km, frais)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="30" y="140" width="235" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mod_catalog" value="&lt;b&gt;Module CatalogPricing&lt;/b&gt;&lt;br&gt;• Catalogue types colis (Sacs, Barils, Cartons)&lt;br&gt;• Poids max, volume, dimensions&lt;br&gt;• Calculateur de devis instantané" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="295" y="140" width="235" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mod_trips" value="&lt;b&gt;Module Trips&lt;/b&gt;&lt;br&gt;• Départs conteneurs 20/40ft, camions, fret&lt;br&gt;• Manifestes de chargement groupés&lt;br&gt;• Mise à jour des jalons en masse (Bulk)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="30" y="280" width="235" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mod_parcels" value="&lt;b&gt;Module Parcels &amp;amp; Indirection&lt;/b&gt;&lt;br&gt;• Code permanent d'étiquette physique&lt;br&gt;• Table d'indirection transport_assignments&lt;br&gt;• Transvasement sans réétiquetage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5AFBC4;strokeWidth=2;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="295" y="280" width="235" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mod_tracking" value="&lt;b&gt;Module Tracking&lt;/b&gt;&lt;br&gt;• Timeline 7 jalons immuable&lt;br&gt;• Consultation publique par QR/Code&lt;br&gt;• Historique et filtres espace client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="30" y="420" width="235" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mod_comms" value="&lt;b&gt;Module Communications&lt;/b&gt;&lt;br&gt;• Journalisation des appels et SMS&lt;br&gt;• Messagerie in-app liée au colis&lt;br&gt;• Notifications d'avancement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="295" y="420" width="235" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c20_rules" value="&lt;b&gt;Règles d'Architecture C20 Applicables :&lt;/b&gt;&lt;br&gt;1. Découpage strict par module (Domain, Infrastructure, Endpoints, Contracts)&lt;br&gt;2. Référence inter-modules via .Contracts uniquement (zéro couplage direct)&lt;br&gt;3. Minimal APIs légères sans contrôleurs monolithiques&lt;br&gt;4. Dépendance inversée &amp;amp; validation FluentValidation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1;fontColor=#273349;align=left;spacingLeft=15;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="30" y="560" width="500" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="indirection_focus" value="&lt;b&gt;Focus Métier : L'Indirection Transparente&lt;/b&gt;&lt;br&gt;L'étiquette physique collée sur le sac ou baril porte un &lt;b&gt;tracking_code unique&lt;/b&gt;.&lt;br&gt;Elle n'est JAMAIS liée en dur à un véhicule ou conteneur.&lt;br&gt;Si le colis est déplacé du Camion 1 vers le Conteneur 2 :&lt;br&gt;• &lt;code&gt;transport_assignments.is_active = FALSE&lt;/code&gt; sur l'ancien&lt;br&gt;• Nouvelle ligne &lt;code&gt;is_active = TRUE&lt;/code&gt; sur le nouveau&lt;br&gt;• &lt;b&gt;Zéro réétiquetage physique requis sur le terrain !&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=1.5;fontColor=#0369A1;align=left;spacingLeft=15;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="30" y="690" width="500" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="k8s_specs" value="&lt;b&gt;Kubernetes Agnostique&lt;/b&gt;&lt;br&gt;Deployments avec 2+ replicas | Probes liveness &amp;amp; readiness sur /healthz | PodDisruptionBudgets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1;fontColor=#273349;fontFamily=Rubik;" vertex="1" parent="zone_back">
+          <mxGeometry x="30" y="850" width="500" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ZONE 4: DATABASE & DEPLOYMENT RUNNER (SANS EF) -->
+        <mxCell id="zone_db" value="Couche Données &amp; Déploiement SQL Autonome (Sans EF)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#F4F6F8;strokeColor=#273349;strokeWidth=2;fontStyle=1;fontSize=14;fontColor=#273349;fontFamily=Rubik;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="80" width="380" height="980" as="geometry" />
+        </mxCell>
+
+        <mxCell id="db_pg" value="&lt;b&gt;PostgreSQL 16+ (Instance Transactionnelle)&lt;/b&gt;&lt;br&gt;• Clés primaires UUID (gen_random_uuid())&lt;br&gt;• Index d'unicité partiel pour indirection active&lt;br&gt;• Audit immuable des 7 jalons de suivi&lt;br&gt;• JSONB pour dimensions et zones de collecte" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#273349;strokeColor=#5AFBC4;strokeWidth=2;fontColor=#FFFFFF;fontFamily=Rubik;" vertex="1" parent="zone_db">
+          <mxGeometry x="40" y="50" width="300" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="db_tables" value="&lt;b&gt;Schéma des 8 Tables Normalisées :&lt;/b&gt;&lt;br&gt;1. &lt;b&gt;users&lt;/b&gt; (clients, convoyeurs, admin)&lt;br&gt;2. &lt;b&gt;carriers&lt;/b&gt; (profil logistique &amp;amp; collecte)&lt;br&gt;3. &lt;b&gt;package_catalog_items&lt;/b&gt; (catalogue)&lt;br&gt;4. &lt;b&gt;trips&lt;/b&gt; (conteneurs, camions, avions)&lt;br&gt;5. &lt;b&gt;parcels&lt;/b&gt; (colis &amp;amp; code étiquette permanent)&lt;br&gt;6. &lt;b&gt;transport_assignments&lt;/b&gt; (indirection)&lt;br&gt;7. &lt;b&gt;tracking_milestones&lt;/b&gt; (audit 7 étapes)&lt;br&gt;8. &lt;b&gt;communications&lt;/b&gt; (messages in-app)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1.5;fontColor=#273349;align=left;spacingLeft=15;fontFamily=Rubik;" vertex="1" parent="zone_db">
+          <mxGeometry x="40" y="210" width="300" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="migration_runner" value="&lt;b&gt;Processus Déploiement SQL Autonome&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;color:#DC2626;&quot;&gt;Responsabilité strictement retirée à EF Core&lt;/i&gt;&lt;br&gt;&lt;br&gt;• Scripts ordonnés : &lt;code&gt;Database/migrations/&lt;/code&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;- V001__initial_schema.sql&lt;br&gt;&amp;nbsp;&amp;nbsp;- V002__seed_demo_data.sql&lt;br&gt;• Table d'audit : &lt;b&gt;schema_migrations&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;(checksum SHA256, durée ms, auteur)&lt;br&gt;• Runners autonomes :&lt;br&gt;&amp;nbsp;&amp;nbsp;- &lt;code&gt;Deploy-Database.ps1&lt;/code&gt; (Windows)&lt;br&gt;&amp;nbsp;&amp;nbsp;- &lt;code&gt;deploy-database.sh&lt;/code&gt; (Linux/CI)&lt;br&gt;• Kubernetes Job de pré-rollout :&lt;br&gt;&amp;nbsp;&amp;nbsp;&lt;code&gt;database-migration-job.yaml&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#DC2626;strokeWidth=2;fontColor=#991B1B;align=left;spacingLeft=12;fontFamily=Rubik;" vertex="1" parent="zone_db">
+          <mxGeometry x="40" y="440" width="300" height="260" as="geometry" />
+        </mxCell>
+
+        <mxCell id="schema_migrations_box" value="&lt;b&gt;Table schema_migrations&lt;/b&gt;&lt;br&gt;&lt;code&gt;version | script_name | checksum | applied_at | duration_ms | applied_by&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#273349;strokeWidth=1;fontColor=#273349;fontSize=11;fontFamily=Rubik;" vertex="1" parent="zone_db">
+          <mxGeometry x="40" y="730" width="300" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- LIENS ET FLUX -->
+        <mxCell id="edge_front_ingress" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;strokeColor=#273349;strokeWidth=2;" edge="1" source="nextjs_box" target="ingress_box" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_ingress_back" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;strokeColor=#5AFBC4;strokeWidth=2.5;" edge="1" source="ingress_box" target="api_host" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_back_db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;strokeColor=#273349;strokeWidth=2;" edge="1" source="mod_parcels" target="db_pg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_runner_pg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;strokeColor=#DC2626;strokeWidth=2;dashed=1;" edge="1" source="migration_runner" target="db_pg" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1570" y="420" />
+              <mxPoint x="1530" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
